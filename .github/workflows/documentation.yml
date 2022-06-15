@@ -1,9 +1,10 @@
 name: Documentation
 
 on: [push]
-
+permissions: 
+  contents: write
 jobs:
-  build:
+  build-and-deploy:
     runs-on: macos-12
 
     steps:

@@ -1,5 +1,5 @@
 import XCTest
-@testable import NavigationSplitTabView
+@testable import NavigationSplitTab
 
 final class NavigationSplitTabViewTests: XCTestCase {
     func testExample() throws {

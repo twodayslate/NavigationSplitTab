@@ -1,4 +1,4 @@
-import NavigationSplitTabView
+import NavigationSplitTab
 
 enum ScreenID: ScreenIdentifierProtocol {
     

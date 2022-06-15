@@ -1,6 +1,6 @@
 @Tutorial(time: 15) {
     @Intro(title: "Quick Start") {
-        Hit the ground running with this quick start guide to ``NavigationSplitTabView``
+        Hit the ground running with this quick start guide to ``NavigationSplitTab``
     }
     
     @Section(title: "Define your screens") {

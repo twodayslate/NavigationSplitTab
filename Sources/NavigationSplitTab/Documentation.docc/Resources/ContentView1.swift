@@ -1,5 +1,5 @@
 import SwiftUI
-import NavigationSplitTabView
+import NavigationSplitTab
 
 struct ContentView: View {
     @StateObject var model = NavigationSplitTabModel(

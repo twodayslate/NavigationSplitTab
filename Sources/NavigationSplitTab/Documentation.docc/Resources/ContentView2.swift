@@ -1,7 +1,7 @@
 import SwiftUI
-import NavigationSplitTabView
+import NavigationSplitTab
 
-public struct ListView<ScreenIdentifier: ScreenIdentifierProtocol>: NavigationListviewProtocol {
+struct ListView<ScreenIdentifier: ScreenIdentifierProtocol>: NavigationListviewProtocol {
     @EnvironmentObject var model: NavigationSplitTabModel<ScreenIdentifier>
     
     var body: some View {
@@ -9,7 +9,7 @@ public struct ListView<ScreenIdentifier: ScreenIdentifierProtocol>: NavigationLi
             ForEach(model.screens) { screen in
                 Button {
                     model.selectedScreen = screen
-                }, label {
+                } label: {
                     Text("\(screen.title)")
                 }
             }
@@ -20,12 +20,14 @@ public struct ListView<ScreenIdentifier: ScreenIdentifierProtocol>: NavigationLi
 struct TabBarView<ScreenIdentifier: ScreenIdentifierProtocol>: TabBarViewProtocol {
     @EnvironmentObject var model: NavigationSplitTabModel<ScreenIdentifier>
     
+    var tabBarHeight: CGFloat
+    
     var body: some View {
         HStack {
             ForEach(model.screens) { screen in
                 Button {
                     model.selectedScreen = screen
-                }, label {
+                } label: {
                     screen.tabImage
                 }
             }
@@ -35,7 +37,7 @@ struct TabBarView<ScreenIdentifier: ScreenIdentifierProtocol>: TabBarViewProtoco
 }
 
 struct ContentView: View {
-    @StateObject var model = NavigationSplitTabModel(
+    @StateObject var model = NavigationSplitTabModel<ScreenID>(
         root: .rootView,
         screens: [
             ScreenID.homeScreen,
@@ -45,9 +47,9 @@ struct ContentView: View {
     
     var body: some View {
         NavigationSplitTabView(model, listView: {
-            ListView()
+            ListView<ScreenID>()
         }, tabBarView: {
-            TabBarView()
+            TabBarView<ScreenID>(tabBarHeight: 44)
         })
     }
 }

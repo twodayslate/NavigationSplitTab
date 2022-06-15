@@ -1,5 +1,5 @@
 import SwiftUI
-import NavigationSplitTabView
+import NavigationSplitTab
 
 @StateObject var model = NavigationSplitTabModel(
     root: .rootView,

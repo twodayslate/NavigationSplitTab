@@ -1,6 +1,10 @@
 name: Documentation
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
+
 permissions: 
   contents: write
 jobs:
@@ -20,4 +24,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages # The branch the action should deploy to.
-          folder: docs # The folder the action should deploy.
+          folder: docs/NavigationSplitTab.doccarchive # The folder the action should deploy.

@@ -1,0 +1,90 @@
+@Tutorial(time: 15) {
+    @Intro(title: "Quick Start") {
+        Hit the ground running with this quick start guide to ``NavigationSplitTabView``
+    }
+    
+    @Section(title: "Define your screens") {
+        @ContentAndMedia {
+            Create your screen identifiers
+        }
+        
+        @Steps {
+            @Step {
+                Create your `ScreenID` enumeration
+                
+                @Code(name: "ScreenID.swift", file: "ScreenID1.swift") {}
+            }
+            
+            @Step {
+                Add your enumeration cases
+                
+                @Code(name: "ScreenID.swift", file: "ScreenID2.swift") {}
+            }
+            
+            @Step {
+                Define your titles
+                
+                @Code(name: "ScreenID.swift", file: "ScreenID3.swift") {}
+            }
+            
+            @Step {
+                Define your icons
+                
+                @Code(name: "ScreenID.swift", file: "ScreenID4.swift") {}
+            }
+            
+            @Step {
+                Set the id
+                
+                @Code(name: "ScreenID.swift", file: "ScreenID5.swift") {}
+            }
+            
+            @Step {
+                Define your views
+                
+                @Code(name: "ScreenID.swift", file: "ScreenID6.swift") {}
+            }
+        }
+    }
+    
+    @Section(title: "Define your model") {
+        @ContentAndMedia {
+            Create your model
+        }
+        
+        @Steps {
+            @Step {
+                Create your model
+                
+                @Code(name: "ContentView.swift", file: "Model1.swift") {}
+            }
+            
+            @Step {
+                Customize your model even more! ``NavigationSplitTabModel`` has a ton of built-in customizations. You can customize even further by sub-classing ``NavigationSplitTabModel``
+                
+                @Code(name: "ContentView.swift", file: "Model2.swift") {}
+            }
+        }
+        
+    }
+        
+    @Section(title: "Display your navigation") {
+        @ContentAndMedia {
+            Start using the navigation
+        }
+        
+        @Steps {
+            @Step {
+                Display the default navigation using the built-in function from your model.
+                
+                @Code(name: "ContentView.swift", file: "ContentView1.swift") {}
+            }
+            
+            @Step {
+                Don't like the built-in? Customize the navigation to your liking!
+                
+                @Code(name: "ContentView.swift", file: "ContentView2.swift") {}
+            }
+        }
+    }
+}

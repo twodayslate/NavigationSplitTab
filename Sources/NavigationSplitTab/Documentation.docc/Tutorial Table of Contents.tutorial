@@ -1,0 +1,11 @@
+@Tutorials(name: "NavigationSplitTab") {
+    @Intro(title: "Introduction") {
+        Learn everything you need to know about ``NavigationSplitTab``
+    }
+    
+    @Chapter(name: "Quick Start") {
+        Hit the ground running
+                
+        @TutorialReference(tutorial: "doc:QuickStart")
+    }
+}

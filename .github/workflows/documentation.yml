@@ -16,12 +16,12 @@ jobs:
       - name: Generate Documentation
         run: |
             mkdir docs && \
+            xcodebuild build -scheme NavigationSplitTab -destination generic/platform=iOS && \
             xcodebuild docbuild -scheme NavigationSplitTab \
-              -destination 'platform=macOS,variant=Mac Catalyst' \
-              OTHER_DOCC_FLAGS="--transform-for-static-hosting --hosting-base-path NavigationSplitTab" \
-              DOCC_OUTPUT_DIR=./docs
+            -destination generic/platform=iOS \
+            OTHER_DOCC_FLAGS="--transform-for-static-hosting --output-path docs --hosting-base-path navigationsplittab"
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages # The branch the action should deploy to.
-          folder: docs/NavigationSplitTab.doccarchive # The folder the action should deploy.
+          folder: docs # The folder the action should deploy.

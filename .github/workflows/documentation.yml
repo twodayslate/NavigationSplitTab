@@ -11,7 +11,7 @@ jobs:
       - name: Generate Documentation
         run: |
             xcodebuild docbuild -scheme NavigationSplitTab \
-              -destination generic/platform=iOS \
+              -destination 'platform=macOS,variant=Mac Catalyst' \
               OTHER_DOCC_FLAGS="--transform-for-static-hosting --hosting-base-path navigationsplittab" \
               DOCC_OUTPUT_DIR=./docs
       - name: Deploy 🚀

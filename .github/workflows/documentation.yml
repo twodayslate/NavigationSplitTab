@@ -11,6 +11,7 @@ jobs:
       - uses: actions/checkout@v1
       - name: Generate Documentation
         run: |
+            mkdir docs && \
             xcodebuild docbuild -scheme NavigationSplitTab \
               -destination 'platform=macOS,variant=Mac Catalyst' \
               OTHER_DOCC_FLAGS="--transform-for-static-hosting --hosting-base-path navigationsplittab" \

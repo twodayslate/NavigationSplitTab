@@ -1,6 +1,5 @@
 import Foundation
 import SwiftUI
-import ScrollViewIfNeeded
 
 enum Style {
     static var horizontalPadding: CGFloat = 10

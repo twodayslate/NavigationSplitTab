@@ -1,0 +1,23 @@
+name: Documentation
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: macos-12
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Generate Documentation
+        uses: fwcd/swift-docc-action@v1
+        with:
+          target: NavigationSplitTab
+          output: ./docs
+          hosting-base-path: navigationsplittab
+          disable-indexing: 'true'
+          transform-for-static-hosting: 'true'
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: docs # The folder the action should deploy.

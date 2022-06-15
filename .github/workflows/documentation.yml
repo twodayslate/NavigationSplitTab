@@ -9,13 +9,11 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Generate Documentation
-        uses: fwcd/swift-docc-action@v1
-        with:
-          target: NavigationSplitTab
-          output: ./docs
-          hosting-base-path: navigationsplittab
-          disable-indexing: 'true'
-          transform-for-static-hosting: 'true'
+        run: |
+            xcodebuild docbuild -scheme ExampleDocC \
+              -destination generic/platform=iOS \
+              OTHER_DOCC_FLAGS="--transform-for-static-hosting --hosting-base-path navigationsplittab" \
+              DOCC_OUTPUT_DIR=./docs
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:

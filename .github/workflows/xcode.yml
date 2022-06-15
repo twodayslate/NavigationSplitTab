@@ -1,0 +1,21 @@
+name: Swift
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: macos-12
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: List Schemes
+      run: xcodebuild -showdestinations -scheme NavigationSplitTab
+    - name: Build
+      run: xcodebuild -scheme NavigationSplitTab -destination 'platform=iOS Simulator,OS=15.5,name=iPhone 12 Pro'
+    - name: Run tests
+      run: xcodebuild test-without-building -scheme NavigationSplitTab -destination 'platform=iOS Simulator,OS=15.5,name=iPhone 12 Pro'

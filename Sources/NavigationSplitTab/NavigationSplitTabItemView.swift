@@ -16,6 +16,7 @@ public struct NavigationSplitTabItemView<ScreenIdentifier: ScreenIdentifierProto
         })
         .labelStyle(TabBarLabelStyle<ScreenIdentifier>(prefferedSize: prefferedSize))
         .foregroundColor(model.isSelected(screen) ? .accentColor : .gray)
+        .tint(model.isSelected(screen) ? .accentColor : .gray)
         .opacity(screen.isDisabled ? 0.5 : 1.0)
     }
 }

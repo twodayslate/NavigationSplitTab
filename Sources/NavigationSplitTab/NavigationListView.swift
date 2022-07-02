@@ -42,6 +42,7 @@ public struct NavigationListView<ScreenIdentifier: ScreenIdentifierProtocol, Edi
                 }
             }
         }
+        .environment(\.editMode, Binding.constant(model.isEditing ? .active : .inactive))
         .listStyle(.sidebar)
         .navigationViewStyle(.stack)
         .navigationTitle("Navigation")

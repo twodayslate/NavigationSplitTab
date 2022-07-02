@@ -41,6 +41,7 @@ public struct MoreView<ScreenIdentifier: ScreenIdentifierProtocol, EditView: Vie
                 }
             }
         }
+        .environment(\.editMode, Binding.constant(model.isEditing ? .active : .inactive))
     }
     
     @ViewBuilder

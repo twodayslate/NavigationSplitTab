@@ -11,32 +11,38 @@ public struct EditingNavigationSplitTabView<ScreenIdentifier: ScreenIdentifierPr
     public var body: some View {
         Section("Visible") {
             ForEach(model.screens) { option in
-                Button {
-                    model.hiddenNavigationOptions.append(option)
-                    model.screens.removeAll(where: { $0 == option })
-                } label: {
-                    HStack {
-                        Text(option.title)
-                        Spacer()
-                        Image(systemName: "minus.circle.fill")
-                            .foregroundColor(.red)
-                    }
+                Text(option.title)
+            }
+            .onDelete { indexSet in
+                let screens = indexSet.map({ model.screens[$0] })
+                model.screens.remove(atOffsets: indexSet)
+                screens.forEach { screen in
+                    model.hiddenNavigationOptions.append(screen)
+                }
+            }
+            .onMove { indexSet, offset in
+                withAnimation {
+                    self.model.objectWillChange.send()
+                    self.model.screens.move(fromOffsets: indexSet, toOffset: offset)
                 }
             }
         }
                 
         Section("Hidden") {
             ForEach(model.hiddenNavigationOptions) { option in
-                Button {
-                    model.screens.append(option)
-                    model.hiddenNavigationOptions.removeAll(where: { $0 == option })
-                } label: {
-                    HStack {
-                        Text(option.title)
-                        Spacer()
-                        Image(systemName: "plus")
-                            .foregroundColor(.accentColor)
-                    }
+                Text(option.title)
+            }
+            .onDelete { indexSet in
+                let screens = indexSet.map({ model.hiddenNavigationOptions[$0] })
+                model.hiddenNavigationOptions.remove(atOffsets: indexSet)
+                screens.forEach { screen in
+                    model.screens.append(screen)
+                }
+            }
+            .onMove { indexSet, offset in
+                withAnimation {
+                    self.model.objectWillChange.send()
+                    self.model.hiddenNavigationOptions.move(fromOffsets: indexSet, toOffset: offset)
                 }
             }
         }

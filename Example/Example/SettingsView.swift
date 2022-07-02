@@ -71,6 +71,7 @@ struct SettingsView: View {
                     Text("Never")
                         .tag(UISplitViewController.DisplayModeButtonVisibility.never)
                 }
+                Toggle("Always show Tab Bar", isOn: $model.alwaysShowTabBar)
             }
             
             Section {

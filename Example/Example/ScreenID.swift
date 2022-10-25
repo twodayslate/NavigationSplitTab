@@ -11,7 +11,7 @@ import SwiftUI
 
 enum ScreenID: ScreenIdentifierProtocol {
     case settings
-    case details(id: Int)
+    case details(id: Int, count: Int = 1)
     case showMore
 
     var id: Int {
@@ -24,7 +24,7 @@ enum ScreenID: ScreenIdentifierProtocol {
             return "More"
         case .settings:
             return "Settings"
-        case .details(let id):
+        case .details(let id, _):
             return "Detail \(id)"
         }
     }
@@ -35,7 +35,7 @@ enum ScreenID: ScreenIdentifierProtocol {
             return Image(systemName: "ellipsis.circle")
         case .settings:
             return Image(systemName: "gear.circle")
-        case .details(let id):
+        case .details(let id, _):
             return Image(systemName: "\(id).circle")
         }
     }
@@ -46,13 +46,13 @@ enum ScreenID: ScreenIdentifierProtocol {
             return Image(systemName: "ellipsis.circle.fill")
         case .settings:
             return Image(systemName: "gear.circle.fill")
-        case .details(let id):
+        case .details(let id, _):
             return Image(systemName: "\(id).circle.fill")
         }
     }
     
     var isDisabled: Bool {
-        if case let .details(id) = self, id == 3 {
+        if case let .details(id, _) = self, id == 3 {
             return true
         }
         return false
@@ -65,8 +65,8 @@ enum ScreenID: ScreenIdentifierProtocol {
             ShowMoreView()
         case .settings:
             SettingsView()
-        case .details(let id):
-            DetailView(id: id)
+        case .details(let id, let count):
+            DetailView(id: id, count: count)
         }
     }
 }

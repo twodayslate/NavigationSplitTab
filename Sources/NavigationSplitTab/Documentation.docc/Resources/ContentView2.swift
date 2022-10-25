@@ -9,6 +9,7 @@ struct ListView<ScreenIdentifier: ScreenIdentifierProtocol>: NavigationListviewP
             ForEach(model.screens) { screen in
                 Button {
                     model.selectedScreen = screen
+                    model.notificationCenter.post(name: .NavigationSplitTab.didSelect, object: option)
                 } label: {
                     Text("\(screen.title)")
                 }
@@ -27,6 +28,7 @@ struct TabBarView<ScreenIdentifier: ScreenIdentifierProtocol>: TabBarViewProtoco
             ForEach(model.screens) { screen in
                 Button {
                     model.selectedScreen = screen
+                    model.notificationCenter.post(name: .NavigationSplitTab.didSelect, object: option)
                 } label: {
                     screen.tabImage
                 }

@@ -22,6 +22,7 @@ public struct NavigationListView<ScreenIdentifier: ScreenIdentifierProtocol, Edi
                 ForEach(model.screens) { option in
                     Button {
                         model.selectedScreen = option
+                        model.notificationCenter.post(name: .NavigationSplitTab.didSelect, object: option)
                     } label: {
                         Label(title: {
                             Text(option.title)

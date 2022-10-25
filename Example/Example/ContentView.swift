@@ -9,14 +9,14 @@ import SwiftUI
 import NavigationSplitTab
 
 struct ContentView: View {
-    @State var model = NavigationSplitTabModel<ScreenID>(
+    @StateObject var model = NavigationSplitTabModel<ScreenID>(
         root: .settings,
         screens: [
         .settings,
         .details(id: 1),
-        .details(id: 2),
-        .details(id: 3),
-        .details(id: 4),
+        .details(id: 2, count: 200),
+        .details(id: 3, count: 300),
+        .details(id: 4, count: 400),
         .details(id: 5),
         .details(id: 6),
         .details(id: 7),

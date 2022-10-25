@@ -2,6 +2,7 @@ import Foundation
 import SwiftUI
 import Combine
 
+@MainActor
 open class NavigationSplitTabModel<ScreenIdentifier: ScreenIdentifierProtocol>: ObservableObject {
     /// The split view provided by UIKit
     @Published public var controller: UISplitViewController? {
@@ -133,6 +134,8 @@ open class NavigationSplitTabModel<ScreenIdentifier: ScreenIdentifierProtocol>: 
     var shouldOnlyShowDetailView: Bool {
         horizontalSizeClass == .compact
     }
+
+    public var notificationCenter = NotificationCenter.default
     
     // MARK: - Init/Deinit
     

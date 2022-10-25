@@ -142,6 +142,7 @@ public struct TabBarView<ScreenIdentifier: ScreenIdentifierProtocol>: TabBarView
             if option == .showMore {
                 model.selectedScreenInMore = .showMore
             }
+            model.notificationCenter.post(name: .NavigationSplitTab.didSelect, object: option)
         } label: {
             option.tabItem(prefferedSize: preferredSize)
         }

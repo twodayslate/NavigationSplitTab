@@ -69,6 +69,4 @@ enum ScreenID: ScreenIdentifierProtocol {
             DetailView(id: id)
         }
     }
-    
-    
 }

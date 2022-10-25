@@ -66,13 +66,10 @@ public struct MoreView<ScreenIdentifier: ScreenIdentifierProtocol, EditView: Vie
             }
         }
     }
-    
+
     func link(_ option: ScreenIdentifier) -> some View {
         NavigationLink(destination: {
-            option
-                .onUIKitAppear(viewWillAppearAction: { _ in
-                    model.selectedScreenInMore = option
-                })
+            OptionView(option: option)
         }, label: {
             Label(title: {
                 Text(option.title)
@@ -81,5 +78,30 @@ public struct MoreView<ScreenIdentifier: ScreenIdentifierProtocol, EditView: Vie
             })
         })
         .disabled(option.isDisabled)
+    }
+}
+
+struct OptionView<ScreenIdentifier: ScreenIdentifierProtocol>: View {
+    @Environment(\.dismiss) private var dismiss
+
+    @EnvironmentObject var model: NavigationSplitTabModel<ScreenIdentifier>
+
+    var option: ScreenIdentifier
+
+    @State private var hasShown = false
+
+    var body: some View {
+        option
+            .onUIKitAppear(viewWillAppearAction: { _ in
+                model.selectedScreenInMore = option
+                hasShown = true
+            })
+            .onReceive(model.$selectedScreen) { _ in
+                if hasShown {
+                    if model.selectedScreenInMore == .showMore {
+                        dismiss()
+                    }
+                }
+            }
     }
 }

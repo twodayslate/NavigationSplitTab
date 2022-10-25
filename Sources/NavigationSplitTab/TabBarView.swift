@@ -138,6 +138,10 @@ public struct TabBarView<ScreenIdentifier: ScreenIdentifierProtocol>: TabBarView
         
         Button {
             model.selectedScreen = option
+            // if showMore is pressed then go back to showMore
+            if option == .showMore {
+                model.selectedScreenInMore = .showMore
+            }
         } label: {
             option.tabItem(prefferedSize: preferredSize)
         }

@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-public protocol ScreenIdentifierProtocol: Hashable, Identifiable, View {
+public protocol ScreenIdentifierProtocol: Hashable, Identifiable, Equatable, View {
     static var showMore: Self { get }
     
     var title: String { get }

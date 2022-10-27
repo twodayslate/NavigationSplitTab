@@ -24,6 +24,7 @@ open class NavigationSplitTabModel<ScreenIdentifier: ScreenIdentifierProtocol>: 
             if selectedScreenInMore != ScreenIdentifier.showMore, selectedScreen != ScreenIdentifier.showMore {
                 selectedScreenInMore = ScreenIdentifier.showMore
             }
+            notificationCenter.post(name: .NavigationSplitTab.didSelect, object: selectedScreen)
         }
     }
     

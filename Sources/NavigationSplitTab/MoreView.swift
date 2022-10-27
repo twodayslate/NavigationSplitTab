@@ -50,7 +50,6 @@ public struct MoreView<ScreenIdentifier: ScreenIdentifierProtocol, EditView: Vie
             ForEach(model.screens) { option in
                 Button {
                     model.selectedScreen = option
-                    model.notificationCenter.post(name: .NavigationSplitTab.didSelect, object: option)
                 } label: {
                     Label(title: {
                         Text(option.title)
